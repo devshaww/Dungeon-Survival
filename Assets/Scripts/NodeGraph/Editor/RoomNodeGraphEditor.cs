@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class RoomNodeGraphEditor : EditorWindow
 {
+    #region Room Node Graph
     private GUIStyle roomNodeStyle;
     private GUIStyle roomNodeStyleLabel;
     private GUIStyle roomNodeStyleActive;
@@ -17,6 +18,7 @@ public class RoomNodeGraphEditor : EditorWindow
     private const float nodeHeight = 75f;
     private const int nodePadding = 25;
     private const int nodeBorder = 12;
+    #endregion
 
     #region GRID
     private Vector2 graphOffset;
@@ -58,12 +60,6 @@ public class RoomNodeGraphEditor : EditorWindow
         roomNodeStyleActive.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
 
         roomNodeTypeList = GameResources.Instance.roomNodeTypeList;
-
-        //if (currentRoomNodeGraph == null || currentRoomNodeGraph.roomNodeList.Count == 0)
-        //{
-        //    CreateRoomNode(new Vector2(200f, 200f), roomNodeTypeList.list.Find(x => x.isEntrance));
-        //}
-
     }
 
     private void OnDisable()
@@ -473,6 +469,7 @@ public class RoomNodeGraphEditor : EditorWindow
                     if (childRoomNode != null)
                     {
                         // Remove parentID from child room node
+                        Debug.Log("deleting a parent node: child remove parent");
                         childRoomNode.RemoveParentRoomNodeIDFromRoomNode(roomNode.id);
                     }
                 }
@@ -485,6 +482,7 @@ public class RoomNodeGraphEditor : EditorWindow
 
                     if (parentRoomNode != null)
                     {
+                        Debug.Log("deleting a child node: parent remove child");
                         // Remove childID from parent node
                         parentRoomNode.RemoveChildRoomNodeIDFromRoomNode(roomNode.id);
                     }
@@ -495,6 +493,7 @@ public class RoomNodeGraphEditor : EditorWindow
         // Delete queued room nodes
         while (roomNodeDeletionQueue.Count > 0)
         {
+            Debug.Log("delete count: " + roomNodeDeletionQueue.Count);
             // Get room node from queue
             RoomNodeSO roomNodeToDelete = roomNodeDeletionQueue.Dequeue();
 

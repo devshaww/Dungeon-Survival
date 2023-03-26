@@ -52,9 +52,7 @@ public static class HelperUtilities
         return error;
     }
 
-    /// <summary>
-    /// Get the mouse world position.
-    /// </summary>
+    // Get the mouse world position.
     public static Vector3 GetMouseWorldPosition()
     {
         if (mainCamera == null) mainCamera = Camera.main;
@@ -73,9 +71,7 @@ public static class HelperUtilities
 
     }
 
-    /// <summary>
-    /// Get the camera viewport lower and upper bounds
-    /// </summary>
+    // Get the camera viewport lower and upper bounds
     public static void CameraWorldPositionBounds(out Vector2Int cameraWorldPositionLowerBounds, out Vector2Int cameraWorldPositionUpperBounds, Camera camera)
     {
         Vector3 worldPositionViewportBottomLeft = camera.ViewportToWorldPoint(new Vector3(0f, 0f, 0f));
@@ -85,9 +81,7 @@ public static class HelperUtilities
         cameraWorldPositionUpperBounds = new Vector2Int((int)worldPositionViewportTopRight.x, (int)worldPositionViewportTopRight.y);
     }
 
-    /// <summary>
-    /// Get the angle in degrees from a direction vector
-    /// </summary>
+    // Get the angle in degrees from a direction vector
     public static float GetAngleFromVector(Vector3 vector)
     {
         float radians = Mathf.Atan2(vector.y, vector.x);
@@ -98,22 +92,14 @@ public static class HelperUtilities
 
     }
 
-    /// <summary>
-    /// Get the direction vector from an angle in degrees
-    /// </summary>
-    /// <returns></returns>
+    // Get the direction vector from an angle in degrees
     public static Vector3 GetDirectionVectorFromAngle(float angle)
     {
         Vector3 directionVector = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0f);
         return directionVector;
     }
 
-
-
-
-    /// <summary>
     /// Get AimDirection enum value from the pased in angleDegrees
-    /// </summary>
     //public static AimDirection GetAimDirection(float angleDegrees)
     //{
     //    AimDirection aimDirection;
@@ -158,9 +144,7 @@ public static class HelperUtilities
 
     //}
 
-    /// <summary>
-    /// Convert the linear volume scale to decibels
-    /// </summary>
+    // Convert the linear volume scale to decibels
     public static float LinearToDecibels(int linear)
     {
         float linearScaleRange = 20f;
@@ -172,9 +156,7 @@ public static class HelperUtilities
 
     
 
-    /// <summary>
-    /// null value debug check
-    /// </summary>
+    // null value debug check
     public static bool ValidateCheckNullValue(Object thisObject, string fieldName, UnityEngine.Object objectToCheck)
     {
         if (objectToCheck == null)
@@ -186,9 +168,7 @@ public static class HelperUtilities
     }
 
 
-    /// <summary>
-    /// positive value debug check- if zero is allowed set isZeroAllowed to true. Returns true if there is an error
-    /// </summary>
+    // positive value debug check- if zero is allowed set isZeroAllowed to true. Returns true if there is an error
     public static bool ValidateCheckPositiveValue(Object thisObject, string fieldName, int valueToCheck, bool isZeroAllowed)
     {
         bool error = false;
@@ -213,9 +193,7 @@ public static class HelperUtilities
         return error;
     }
 
-    /// <summary>
-    /// positive value debug check - if zero is allowed set isZeroAllowed to true. Returns true if there is an error
-    /// </summary>
+    // positive value debug check - if zero is allowed set isZeroAllowed to true. Returns true if there is an error
     public static bool ValidateCheckPositiveValue(Object thisObject, string fieldName, float valueToCheck, bool isZeroAllowed)
     {
         bool error = false;
@@ -240,9 +218,7 @@ public static class HelperUtilities
         return error;
     }
 
-    /// <summary>
-    /// positive range debug check - set isZeroAllowed to true if the min and max range values can both be zero. Returns true if there is an error
-    /// </summary>
+    // positive range debug check - set isZeroAllowed to true if the min and max range values can both be zero. Returns true if there is an error
     public static bool ValidateCheckPositiveRange(Object thisObject, string fieldNameMinimum, float valueToCheckMinimum, string fieldNameMaximum, float valueToCheckMaximum, bool isZeroAllowed)
     {
         bool error = false;
@@ -259,9 +235,7 @@ public static class HelperUtilities
         return error;
     }
 
-    /// <summary>
-    /// positive range debug check - set isZeroAllowed to true if the min and max range values can both be zero. Returns true if there is an error
-    /// </summary>
+    // positive range debug check - set isZeroAllowed to true if the min and max range values can both be zero. Returns true if there is an error
     public static bool ValidateCheckPositiveRange(Object thisObject, string fieldNameMinimum, int valueToCheckMinimum, string fieldNameMaximum, int valueToCheckMaximum, bool isZeroAllowed)
     {
         bool error = false;
@@ -278,9 +252,7 @@ public static class HelperUtilities
         return error;
     }
 
-    /// <summary>
-    /// Get the nearest spawn position to the player
-    /// </summary>
+    // Get the nearest spawn position to the player
     //public static Vector3 GetSpawnPositionNearestToPlayer(Vector3 playerPosition)
     //{
     //    Room currentRoom = GameManager.Instance.GetCurrentRoom();

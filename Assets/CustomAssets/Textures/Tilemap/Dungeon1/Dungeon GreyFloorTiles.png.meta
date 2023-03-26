@@ -2438,7 +2438,6 @@ TextureImporter:
       Dungeon 1 GreyFloorTiles_65: 4380505766849567275
       Dungeon 1 GreyFloorTiles_73: 7345695746825142368
       Dungeon 1 GreyFloorTiles_22: 6641146965405322584
-      Dungeon 1 GreyFloorTiles_94: 7556823318093994618
       Dungeon 1 GreyFloorTiles_5: 284640204972663265
       Dungeon 1 GreyFloorTiles_40: 3225181941626849526
       Dungeon 1 GreyFloorTiles_64: 7405486263384167722
@@ -2492,9 +2491,9 @@ TextureImporter:
       Dungeon 1 GreyFloorTiles_2: 21084347685560714
       Dungeon 1 GreyFloorTiles_10: -7849177268474562130
       Dungeon 1 GreyFloorTiles_24: 1720350824709295017
+      Dungeon 1 GreyFloorTiles_46: -4454192786979859580
       Dungeon 1 GreyFloorTiles_9: 6454042042217481252
       Dungeon 1 GreyFloorTiles_70: 3815068280474730889
-      Dungeon 1 GreyFloorTiles_46: -4454192786979859580
       Dungeon 1 GreyFloorTiles_28: -2008374734848503312
       Dungeon 1 GreyFloorTiles_77: 1420809324971272471
       Dungeon 1 GreyFloorTiles_91: -5038348824615690140
@@ -2510,8 +2509,8 @@ TextureImporter:
       Dungeon 1 GreyFloorTiles_4: -2098849340859938533
       Dungeon 1 GreyFloorTiles_19: 1949395700089675881
       Dungeon 1 GreyFloorTiles_3: 4893532351944875876
-      Dungeon 1 GreyFloorTiles_32: -472593626346147707
       Dungeon 1 GreyFloorTiles_59: -4690268729117049590
+      Dungeon 1 GreyFloorTiles_32: -472593626346147707
       Dungeon 1 GreyFloorTiles_88: 144167317348025727
       Dungeon 1 GreyFloorTiles_87: -8912997869429895295
       Dungeon 1 GreyFloorTiles_15: -8417730064556738035
@@ -2520,11 +2519,12 @@ TextureImporter:
       Dungeon 1 GreyFloorTiles_47: 8998362741118085609
       Dungeon 1 GreyFloorTiles_51: 4893992266484971509
       Dungeon 1 GreyFloorTiles_23: -5576040837960970672
+      Dungeon 1 GreyFloorTiles_94: 7556823318093994618
       Dungeon 1 GreyFloorTiles_25: 8702077759582658844
       Dungeon 1 GreyFloorTiles_42: -3820750300168021138
-      Dungeon 1 GreyFloorTiles_35: 3590851041476226566
       Dungeon 1 GreyFloorTiles_43: -6152081286623421831
       Dungeon 1 GreyFloorTiles_58: 3227260125733813086
+      Dungeon 1 GreyFloorTiles_35: 3590851041476226566
       Dungeon 1 GreyFloorTiles_90: -2099249777733509861
       Dungeon 1 GreyFloorTiles_53: -8046367747935719395
   spritePackingTag: 

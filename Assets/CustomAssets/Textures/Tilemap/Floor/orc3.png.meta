@@ -223,10 +223,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      orc3_1: 2128713026156772679
+      orc3_0: -8505298385123301557
       orc3_3: 3589588719171036738
       orc3_2: 581197051434270721
-      orc3_0: -8505298385123301557
+      orc3_1: 2128713026156772679
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

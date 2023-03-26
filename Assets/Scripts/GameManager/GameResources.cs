@@ -18,14 +18,9 @@ public class GameResources : MonoBehaviour
         }
     }
 
-    #region Header DUNGEON
     [Space(10)]
     [Header("DUNGEON")]
-    #endregion
-    #region Tooltip
-    //[Space(10)]
     [Tooltip("Populate with the dungeon RoomNodeTypeListSO")]
-    #endregion
     public RoomNodeTypeListSO roomNodeTypeList; 
     
 }

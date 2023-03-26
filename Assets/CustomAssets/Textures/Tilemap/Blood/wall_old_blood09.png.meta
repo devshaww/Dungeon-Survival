@@ -223,10 +223,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wall_old_blood09_2: 5021112111177293586
+      wall_old_blood09_1: -4603711752843919628
       wall_old_blood09_0: 2661785300512517483
       wall_old_blood09_3: 400746334034956105
-      wall_old_blood09_1: -4603711752843919628
+      wall_old_blood09_2: 5021112111177293586
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
