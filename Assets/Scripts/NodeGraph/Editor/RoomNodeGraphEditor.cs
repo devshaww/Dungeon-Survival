@@ -126,7 +126,10 @@ public class RoomNodeGraphEditor : EditorWindow
 
         Handles.color = new Color(gridColor.r, gridColor.g, gridColor.b, gridOpacity);
 
-        graphOffset += graphDrag * 0.5f;
+		// 0.5 because this method gets called twice, so that graphOffset adds delta twice
+		// I put it in MiddleMouseDownEvent method so it's not necessary to
+		// times 0.5 anymore.
+		//graphOffset += graphDrag * 0.5f;  
 
         Vector3 gridOffset = new Vector3(graphOffset.x % gridSize, graphOffset.y % gridSize, 0);
 
@@ -457,9 +460,13 @@ public class RoomNodeGraphEditor : EditorWindow
         // process left click drag event - drag node graph
         else if (currentEvent.button == 0)
         {
-            ProcessLeftMouseDragEvent(currentEvent.delta);
+
         }
-    }
+		else if (currentEvent.button == 2)
+		{
+			ProcessMiddleMouseDragEvent(currentEvent.delta);
+		}
+	}
 
     /// <summary>
     /// Process right mouse drag event  - draw line
@@ -476,9 +483,10 @@ public class RoomNodeGraphEditor : EditorWindow
     /// <summary>
     /// Process left mouse drag event - drag room node graph
     /// </summary>
-    private void ProcessLeftMouseDragEvent(Vector2 dragDelta)
+    private void ProcessMiddleMouseDragEvent(Vector2 dragDelta)
     {
         graphDrag = dragDelta;
+        graphOffset += graphDrag;
 
         for (int i = 0; i < currentRoomNodeGraph.roomNodeList.Count; i++)
         {
