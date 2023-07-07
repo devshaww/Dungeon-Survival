@@ -621,7 +621,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
             instantiatedRoom.room = room;
 
             // Initialise The Instantiated Room
-            instantiatedRoom.Initialise(roomGameobject);
+            instantiatedRoom.Initialize(roomGameobject);
 
             // Save gameobject reference.
             room.instantiatedRoom = instantiatedRoom;
