@@ -53,6 +53,26 @@ public static class HelperUtilities
 		return error;
 	}
 
+	public static Vector3 GetSpawnPositionNearestTo(Vector3 position)
+    {
+        Room currentRoom = GameManager.Instance.GetCurrentRoom();
+
+        Grid grid = currentRoom.instantiatedRoom.grid;
+
+        Vector3 nearestPosition = new Vector3(10000f, 10000f, 0);
+
+        foreach (Vector2Int spawnPositionGrid in currentRoom.spawnPositionArray)
+        {
+            Vector2 spawnPositionWorld = grid.CellToWorld((Vector3Int)spawnPositionGrid);
+            if (Vector3.Distance(spawnPositionWorld, position) < Vector3.Distance(nearestPosition, position))
+            {
+                nearestPosition = spawnPositionWorld;
+            }
+        }
+
+        return nearestPosition;
+    }
+
 	/// <summary>
 	/// list empty or contains null value check - returns true if there is an error
 	/// </summary>

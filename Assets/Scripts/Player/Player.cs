@@ -8,7 +8,8 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(SortingGroup))]
 [RequireComponent(typeof(SpriteRenderer))]
-
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Health))]
 [DisallowMultipleComponent]
 
 public class Player : MonoBehaviour
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		animator = GetComponent<Animator>();
+		health = GetComponent<Health>();
 	}
 
 	public void Initialize(PlayerDetailSO playerDetails)

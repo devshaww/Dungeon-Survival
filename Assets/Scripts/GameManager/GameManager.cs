@@ -5,21 +5,53 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class GameManager : SingletonMonobehaviour<GameManager>
 {
-    #region Header DUNGEON LEVELS
-
     [Space(10)]
     [Header("DUNGEON LEVELS")]
-
-    #endregion Header DUNGEON LEVELS
     [SerializeField] private List<DungeonLevelSO> dungeonLevelList;
 
     [SerializeField] private int currentDungeonLevelListIndex = 0;
 
-    [HideInInspector] public GameState gameState;
+	private Room currentRoom;
+	private Room previousRoom;
+	private PlayerDetailSO playerDetails;
+	private Player player;
+
+	[HideInInspector] public GameState gameState;
 
 
-    // Start is called before the first frame update
-    private void Start()
+	protected override void Awake()
+	{
+        base.Awake();
+
+        playerDetails = GameResources.Instance.currentPlayer.playerDetails;
+        InstantiatePlayer();
+	}
+
+    private void InstantiatePlayer()
+    {
+        GameObject playerGameObject = Instantiate(playerDetails.playerPrefab);
+        player = playerGameObject.GetComponent<Player>();
+        player.Initialize(playerDetails);
+    }
+
+    public Room GetCurrentRoom()
+    {
+        return currentRoom;
+    }
+
+	public void SetCurrentRoom(Room room)
+	{
+        previousRoom = currentRoom;
+        currentRoom = room;
+	}
+
+	public Player GetPlayer()
+	{
+		return player;
+	}
+
+	// Start is called before the first frame update
+	private void Start()
     {
         gameState = GameState.gameStarted;
     }
@@ -27,7 +59,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     // Update is called once per frame
     private void Update()
     {
-        HandleGameState();
+        UpdateGameState();
 
         // For testing
         if (Input.GetKeyDown(KeyCode.R))
@@ -37,12 +69,8 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     }
 
-    /// <summary>
-    /// Handle game state
-    /// </summary>
-    private void HandleGameState()
+    private void UpdateGameState()
     {
-        // Handle game state
         switch (gameState)
         {
             case GameState.gameStarted:
@@ -55,7 +83,6 @@ public class GameManager : SingletonMonobehaviour<GameManager>
                 break;
 
         }
-
     }
 
 
@@ -69,8 +96,10 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             Debug.LogError("Couldn't build dungeon from specified rooms and node graphs");
         }
 
+        player.gameObject.transform.position = new Vector3((currentRoom.lowerBounds.x + currentRoom.upperBounds.x) / 2f, (currentRoom.lowerBounds.y + currentRoom.upperBounds.y) / 2f, 0f);
+        player.gameObject.transform.position = HelperUtilities.GetSpawnPositionNearestTo(player.gameObject.transform.position);
 
-    }
+	}
 
 
     #region Validation
