@@ -87,7 +87,7 @@ public static class HelperUtilities
 
 		Vector3 worldPos = mainCamera.ScreenToWorldPoint(mouseScreenPos);
 
-        worldPos.z = 0f;
+		worldPos.z = 0f;
 
         return worldPos;
 	}
