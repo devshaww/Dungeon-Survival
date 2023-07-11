@@ -4,9 +4,9 @@ using UnityEngine;
 
 public static class HelperUtilities
 {
-    /// <summary>
-    /// Empty string debug check
-    /// </summary>
+
+    public static Camera mainCamera;
+
     public static bool ValidateCheckEmptyString(Object thisObject, string fieldName, string stringToCheck)
     {
         if (stringToCheck == "")
@@ -72,6 +72,78 @@ public static class HelperUtilities
 
         return nearestPosition;
     }
+
+    public static Vector3 GetMouseWorldPosition()
+    {
+        if (!mainCamera)
+        {
+            mainCamera = Camera.main;
+        }
+
+        Vector3 mouseScreenPos = Input.mousePosition;
+
+        mouseScreenPos.x = Mathf.Clamp(mouseScreenPos.x, 0f, Screen.width);
+		mouseScreenPos.y = Mathf.Clamp(mouseScreenPos.y, 0f, Screen.height);
+
+		Vector3 worldPos = mainCamera.ScreenToWorldPoint(mouseScreenPos);
+
+        worldPos.z = 0f;
+
+        return worldPos;
+	}
+
+    public static float GetAngleFromVector(Vector3 vector)
+    {
+        // in pi
+        float radians = Mathf.Atan2(vector.y, vector.x);
+        // angle
+        float degrees = radians * Mathf.Rad2Deg;
+
+        return degrees;
+    }
+
+	public static AimDirection GetAimDirection(float angle)
+	{
+		AimDirection aimDirection;
+
+		if (angle >= 22f && angle <= 67f)
+		{
+			aimDirection = AimDirection.UpRight;
+		}
+
+		else if (angle > 67f && angle <= 112f)
+		{
+			aimDirection = AimDirection.Up;
+		}
+
+		else if (angle > 112f && angle <= 158f)
+		{
+			aimDirection = AimDirection.UpLeft;
+		}
+
+		else if ((angle <= 180f && angle > 158f) || (angle > -180 && angle <= -135f))
+		{
+			aimDirection = AimDirection.Left;
+		}
+
+		else if ((angle > -135f && angle <= -45f))
+		{
+			aimDirection = AimDirection.Down;
+		}
+
+		else if ((angle > -45f && angle <= 0f) || (angle > 0 && angle < 22f))
+		{
+			aimDirection = AimDirection.Right;
+		}
+		else
+		{
+			aimDirection = AimDirection.Right;
+		}
+
+		return aimDirection;
+
+	}
+
 
 	/// <summary>
 	/// list empty or contains null value check - returns true if there is an error

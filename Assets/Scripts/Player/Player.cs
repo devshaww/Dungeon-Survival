@@ -10,6 +10,12 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Health))]
+[RequireComponent(typeof(IdleEvent))]
+[RequireComponent(typeof(Idle))]
+[RequireComponent(typeof(AimWeaponEvent))]
+[RequireComponent(typeof(AimWeapon))]
+[RequireComponent(typeof(AnimatePlayer))]
+[RequireComponent(typeof(PlayerControl))]
 [DisallowMultipleComponent]
 
 public class Player : MonoBehaviour
@@ -18,12 +24,16 @@ public class Player : MonoBehaviour
 	[HideInInspector] public SpriteRenderer spriteRenderer;
 	[HideInInspector] public Animator animator;
 	[HideInInspector] public Health health;
+	[HideInInspector] public IdleEvent idleEvent;
+	[HideInInspector] public AimWeaponEvent aimWeaponEvent;
 
 	private void Awake()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		animator = GetComponent<Animator>();
 		health = GetComponent<Health>();
+		idleEvent = GetComponent<IdleEvent>();
+		aimWeaponEvent = GetComponent<AimWeaponEvent>();
 	}
 
 	public void Initialize(PlayerDetailSO playerDetails)
