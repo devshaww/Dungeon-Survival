@@ -7,6 +7,7 @@ public static class Settings
 {
 	public const float pixelsPerUnit = 16f;
 	public const float tileSizePixels = 16f;
+	public const float fadeInTime = .5f;
 
     #region DUNGEON BUILD SETTINGS
     public const int maxDungeonRebuildAttemptsForRoomGraph = 1000;
@@ -49,5 +50,10 @@ public static class Settings
 	public static int destroy = Animator.StringToHash("destroy");
 	public static String stateDestroyed = "Destroyed";
 
+	#endregion
+
+	#region GAMEOBJECT TAGS
+	public const string playerTag = "Player";
+	public const string playerWeapon = "playerWeapon";
 	#endregion
 }

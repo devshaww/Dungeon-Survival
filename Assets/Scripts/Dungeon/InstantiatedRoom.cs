@@ -52,7 +52,7 @@ public class InstantiatedRoom : MonoBehaviour
             {
                 float tileDistance = Settings.tileSizePixels / Settings.pixelsPerUnit;
 
-                GameObject door = null;
+                GameObject door;
 
                 if (doorway.orientation == Orientation.north)
                 {
