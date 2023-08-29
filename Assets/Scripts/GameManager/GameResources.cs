@@ -30,6 +30,10 @@ public class GameResources : MonoBehaviour
     #endregion
     public Material dimmedMaterial;
 
+    public Material litMaterial;
+
+    public Shader variableLitShader;
+
     #region Header PLAYER
     [Space(10)]
     [Header("PLAYER")]

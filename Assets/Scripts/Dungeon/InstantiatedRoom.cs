@@ -28,10 +28,17 @@ public class InstantiatedRoom : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// Initialise The Instantiated Room
-    /// </summary>
-    public void Initialize(GameObject roomGameobject)
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.tag == Settings.playerTag || collision.tag == Settings.playerWeapon)
+        {
+            this.room.isPreviouslyVisited = true;
+            StaticEventHandler.CallRoomChangedEvent(room);
+        }
+	}
+
+	// Initialize The Instantiated Room
+	public void Initialize(GameObject roomGameobject)
     {
         PopulateTilemapMemberVariables(roomGameobject);
 
