@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class PlayerControl : MonoBehaviour
 	private Player player;
 	private bool leftMouseDownPreviousFrame = false;
 	private float moveSpeed;
-    private int currentWeaponIndex = 1;
+    private int currentWeaponIndex = 0;
 
 	private void Start()
 	{
@@ -91,8 +92,46 @@ public class PlayerControl : MonoBehaviour
 		// Fire weapon input
 		FireWeaponInput(weaponDirection, weaponAngle, playerAngle, aimDirection);
 
+		SwitchWeaponInput();
+
 		// Reload weapon input
 		ReloadWeaponInput();
+	}
+
+	private void SwitchWeaponInput()
+	{
+		if (Input.mouseScrollDelta.y < 0f)
+		{
+			PreviousWeapon();
+		}
+		if (Input.mouseScrollDelta.y > 0f)
+		{
+			NextWeapon();
+		}
+	}
+
+	private void NextWeapon()
+	{
+		currentWeaponIndex++;
+
+		if (currentWeaponIndex >= player.weaponList.Count)
+		{
+			currentWeaponIndex = 0;
+		}
+
+		SetWeaponByIndex(currentWeaponIndex);
+	}
+
+	private void PreviousWeapon()
+	{
+		currentWeaponIndex--;
+
+		if (currentWeaponIndex < 0)
+		{
+			currentWeaponIndex = player.weaponList.Count - 1;
+		}
+
+		SetWeaponByIndex(currentWeaponIndex);
 	}
 
 	private void ReloadWeaponInput()
