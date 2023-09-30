@@ -21,22 +21,26 @@ public class GameResources : MonoBehaviour
     #region Header DUNGEON
     [Space(10)]
     [Header("DUNGEON")]
-    #endregion
     public RoomNodeTypeListSO roomNodeTypeList;
+	#endregion
 
-    #region Header MATERIALS
-    [Space(10)]
+	#region Header MATERIALS
+	[Space(10)]
     [Header("MATERIALS")]
-    #endregion
     public Material dimmedMaterial;
-
     public Material litMaterial;
-
     public Shader variableLitShader;
+	#endregion
 
-    #region Header PLAYER
-    [Space(10)]
+	#region Header PLAYER
+	[Space(10)]
     [Header("PLAYER")]
     #endregion
     public CurrentPlayerSO currentPlayer;
+
+    #region Header PLAYER
+    [Space(10)]
+    [Header("UI")]
+    public GameObject ammoIconPrefab;
+	#endregion
 }

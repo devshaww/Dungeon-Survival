@@ -10,16 +10,22 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Health))]
+
 [RequireComponent(typeof(IdleEvent))]
 [RequireComponent(typeof(MoveEvent))]
 [RequireComponent(typeof(Move))]
 [RequireComponent(typeof(Idle))]
 [RequireComponent(typeof(AimWeaponEvent))]
 [RequireComponent(typeof(AimWeapon))]
-[RequireComponent(typeof(AnimatePlayer))]
-[RequireComponent(typeof(PlayerControl))]
+[RequireComponent(typeof(ReloadWeaponEvent))]
+[RequireComponent(typeof(ReloadWeapon))]
 [RequireComponent(typeof(SetActiveWeaponEvent))]
 [RequireComponent(typeof(ActiveWeapon))]
+[RequireComponent(typeof(WeaponReloadedEvent))]
+
+[RequireComponent(typeof(AnimatePlayer))]
+[RequireComponent(typeof(PlayerControl))]
+
 [DisallowMultipleComponent]
 
 public class Player : MonoBehaviour
@@ -35,6 +41,7 @@ public class Player : MonoBehaviour
 	[HideInInspector] public WeaponFiredEvent weaponFiredEvent;
 	[HideInInspector] public SetActiveWeaponEvent setActiveWeaponEvent;
 	[HideInInspector] public ReloadWeaponEvent reloadWeaponEvent;
+	[HideInInspector] public WeaponReloadedEvent weaponReloadedEvent;
 	[HideInInspector] public ActiveWeapon activeWeapon;
 
 	public List<Weapon> weaponList = new List<Weapon>();
@@ -52,6 +59,7 @@ public class Player : MonoBehaviour
 		weaponFiredEvent = GetComponent<WeaponFiredEvent>();
 		fireWeaponEvent = GetComponent<FireWeaponEvent>();
 		reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
+		weaponReloadedEvent = GetComponent<WeaponReloadedEvent>();
 	}
 
 	public void Initialize(PlayerDetailSO playerDetails)

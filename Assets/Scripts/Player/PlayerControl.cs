@@ -92,7 +92,7 @@ public class PlayerControl : MonoBehaviour
 		FireWeaponInput(weaponDirection, weaponAngle, playerAngle, aimDirection);
 
 		// Reload weapon input
-		//ReloadWeaponInput();
+		ReloadWeaponInput();
 	}
 
 	private void ReloadWeaponInput()
@@ -103,7 +103,8 @@ public class PlayerControl : MonoBehaviour
 		if (currentWeapon.isWeaponReloading) return;
 
 		// remaining ammo is less than clip capacity then return and not infinite ammo then return
-		if (currentWeapon.weaponRemainingAmmo < currentWeapon.weaponDetails.weaponClipAmmoCapacity && !currentWeapon.weaponDetails.hasInfiniteAmmo) return;
+		//if (currentWeapon.weaponRemainingAmmo < currentWeapon.weaponDetails.weaponClipAmmoCapacity && !currentWeapon.weaponDetails.hasInfiniteAmmo) return;
+		if (currentWeapon.weaponRemainingAmmo <= 0 && !currentWeapon.weaponDetails.hasInfiniteAmmo) return;
 
 		// if ammo in clip equals clip capacity then return
 		if (currentWeapon.weaponClipRemainingAmmo == currentWeapon.weaponDetails.weaponClipAmmoCapacity) return;
