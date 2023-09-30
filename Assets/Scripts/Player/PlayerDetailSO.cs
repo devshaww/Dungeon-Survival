@@ -5,13 +5,22 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerDetails_", menuName = "Scriptable Objects/Player/Player Details")]
 public class PlayerDetailSO : ScriptableObject
 {
+	[Header("PLAYER BASE DETAILS")]
 	public string characterName;
 	public GameObject playerPrefab;
-	public Sprite playerHandSprite;
-	public Sprite playerMiniMapIcon;
 	public RuntimeAnimatorController runtimeAnimatorController;
+
 	public int health;
 
+	[Space(10)]
+	[Header("WEAPON")]
+	public WeaponDetailSO startingWeapon;
+	public List<WeaponDetailSO> startingWeaponList;
+
+	[Space(10)]
+	[Header("OTHERS")]
+	public Sprite playerHandSprite;
+	public Sprite playerMiniMapIcon;
 
 	#region Validation
 #if UNITY_EDITOR
