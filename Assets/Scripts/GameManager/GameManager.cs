@@ -50,6 +50,11 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 		return player;
 	}
 
+    public Sprite GetPlayerMinimapIcon()
+    {
+        return playerDetails.playerMiniMapIcon;
+    }
+
 	// Start is called before the first frame update
 	private void Start()
     {

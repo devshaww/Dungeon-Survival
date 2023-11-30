@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class GameResources : MonoBehaviour
@@ -30,7 +31,15 @@ public class GameResources : MonoBehaviour
     public Material dimmedMaterial;
     public Material litMaterial;
     public Shader variableLitShader;
-	#endregion
+    #endregion
+
+
+    #region Header SOUNDS
+    [Space(10)]
+    [Header("SOUNDS")]
+    #endregion
+    public AudioMixerGroup soundMasterMixerGroup;
+    public SoundEffectSO doorOpenSoundEffect;
 
 	#region Header PLAYER
 	[Space(10)]

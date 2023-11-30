@@ -150,10 +150,13 @@ public static class HelperUtilities
 
 	}
 
+	public static float LinearToDecibels(int linear)
+	{
+		float linearScaleRange = 20f;
 
-	/// <summary>
-	/// list empty or contains null value check - returns true if there is an error
-	/// </summary>
+		return Mathf.Log10(linear / linearScaleRange) * 20f;
+	}
+
 	public static bool ValidateCheckEnumerableValues(Object thisObject, string fieldName, IEnumerable enumerableObjectToCheck)
     {
         bool error = false;

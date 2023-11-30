@@ -229,7 +229,6 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
 
                 // Add room to dictionary
                 dungeonBuilderRoomDictionary.Add(room.id, room);
-
             }
             else
             {
@@ -302,7 +301,13 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
         // Calculate 'world' grid parent doorway position
         Vector2Int parentDoorwayPosition = parentRoom.lowerBounds + doorwayParent.position - parentRoom.templateLowerBounds;
 
-        Vector2Int adjustment = Vector2Int.zero;
+        if (parentRoom.roomNodeType.isEntrance)
+        {
+   //         Debug.Log(string.Format("Entrance LowerBounds: {0}, {1}", parentRoom.lowerBounds.x, parentRoom.lowerBounds.y));
+			//Debug.Log(string.Format("Entrance Doorway Pos: {0}, {1}", parentDoorwayPosition.x, parentDoorwayPosition.y));
+		}
+
+		Vector2Int adjustment = Vector2Int.zero;
 
         // Calculate adjustment position offset based on room doorway position that we are trying to connect (e.g. if this doorway is west then we need to add (1,0) to the east parent doorway)
 
@@ -310,19 +315,35 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
         {
             case Orientation.north:
                 adjustment = new Vector2Int(0, -1);
+                if (parentRoom.roomNodeType.isEntrance)
+                {
+					//Debug.Log("North");
+				}
                 break;
 
             case Orientation.east:
                 adjustment = new Vector2Int(-1, 0);
-                break;
+				if (parentRoom.roomNodeType.isEntrance)
+				{
+					//Debug.Log("East");
+				}
+				break;
 
             case Orientation.south:
                 adjustment = new Vector2Int(0, 1);
-                break;
+				if (parentRoom.roomNodeType.isEntrance)
+				{
+					//Debug.Log("South");
+				}
+				break;
 
             case Orientation.west:
                 adjustment = new Vector2Int(1, 0);
-                break;
+				if (parentRoom.roomNodeType.isEntrance)
+				{
+					//Debug.Log("West");
+				}
+				break;
 
             case Orientation.none:
                 break;
@@ -335,7 +356,19 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
         room.lowerBounds = parentDoorwayPosition + adjustment + room.templateLowerBounds - doorway.position;
         room.upperBounds = room.lowerBounds + room.templateUpperBounds - room.templateLowerBounds;
 
-        Room overlappingRoom = CheckForRoomOverlap(room);
+        if (parentRoom.roomNodeType.isEntrance)
+        {
+            //Debug.Log(string.Format("New Room TemplateLowerBounds: {0}, {1}", room.templateLowerBounds.x, room.templateLowerBounds.y));
+            //Debug.Log(string.Format("New Room LowerBounds: {0}, {1}", room.lowerBounds.x, room.lowerBounds.y));
+            //Debug.Log(string.Format("New Room UpperBounds: {0}, {1}", room.upperBounds.x, room.upperBounds.y));
+            //Debug.Log(string.Format("EntranceDoorwayPos({0}, {1}) + adjustment({2}, {3}) + NewRoomTemplateLB({4}, {5}) - DoorwayPos({6}, {7}))",
+            //parentDoorwayPosition.x, parentDoorwayPosition.y,
+            //    adjustment.x, adjustment.y,
+            //    room.templateLowerBounds.x, room.templateLowerBounds.y,
+            //    doorway.position.x, doorway.position.y));
+        }
+
+		Room overlappingRoom = CheckForRoomOverlap(room);
 
         if (overlappingRoom == null)
         {
@@ -583,6 +616,19 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
         {
             Room room = keyvaluepair.Value;
 
+            if (room.roomNodeType.isEntrance)
+            {
+                //Debug.Log(string.Format("Entrance lowerBounds: {0}, {1}", room.lowerBounds.x, room.lowerBounds.y));
+				Vector3 testPos = new Vector3(room.lowerBounds.x - room.templateLowerBounds.x, room.lowerBounds.y - room.templateLowerBounds.y, 0f);
+                //Debug.Log(string.Format("Entrance pos after subtraction: {0}, {1}", testPos.x, testPos.y));
+            }
+
+            if (room.roomNodeType.isCorridorNS || room.roomNodeType.isCorridorEW)
+            {
+				//Debug.Log(string.Format("Corridor lowerBounds: {0}, {1}", room.lowerBounds.x, room.lowerBounds.y));
+				Vector3 testPos1 = new Vector3(room.lowerBounds.x - room.templateLowerBounds.x, room.lowerBounds.y - room.templateLowerBounds.y, 0f);
+				//Debug.Log(string.Format("Corridor pos after subtraction: {0}, {1}", testPos1.x, testPos1.y));
+			}
             // Calculate room position (remember the room instantiatation position needs to be adjusted by the room template lower bounds)
             Vector3 roomPosition = new Vector3(room.lowerBounds.x - room.templateLowerBounds.x, room.lowerBounds.y - room.templateLowerBounds.y, 0f);
 
