@@ -1,5 +1,5 @@
 # Dungeon-Survival
-A Unity 2D dungeon survival roguelike game demo
+A Unity 2D dungeon survival game demo
 
 Map Generation
 
